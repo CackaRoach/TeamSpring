@@ -1,4 +1,4 @@
-package com.test.springboard;
+package com.test.springboard.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
