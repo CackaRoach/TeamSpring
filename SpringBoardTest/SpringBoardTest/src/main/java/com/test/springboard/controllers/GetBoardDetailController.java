@@ -40,8 +40,9 @@ public class GetBoardDetailController {
 									   Model model) {
 		logger.info("Call : showGetBoardDetail - GET INDEX : " + boardVO.getIdx());
 		
-		if(userVO.getId() == null)
+		if(userVO.getId() == null) {
 			return "login.do";
+		}
 
 		model.addAttribute("userVO", userVO);
 		model.addAttribute("boardVO", boardService.getBoardDetail(boardVO.getIdx()));

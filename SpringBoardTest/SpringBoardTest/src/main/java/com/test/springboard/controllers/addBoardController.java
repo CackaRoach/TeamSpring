@@ -45,9 +45,9 @@ public class addBoardController {
 								     Model model) {
 		logger.info("Call : AddBoardList.jsp - GET NAME : " + userVO.getName());
 		
-		if(userVO.getId() == null)
+		if(userVO.getId() == null) {
 			return "redirect:login.do";
-		
+		}
 
 		model.addAttribute("boardVO", boardVO);
 		
@@ -58,13 +58,20 @@ public class addBoardController {
 	public String addBoardList(@ModelAttribute("userVO") UserVO userVO, 
 								@ModelAttribute("boardVO") BoardVO boardVO, 
 								 Model model) {
+		logger.info("Call : AddBoardList.jsp - POST INDEX : " + boardVO.getIdx());
 		logger.info("Call : AddBoardList.jsp - POST TITLE : " + boardVO.getTitle());
-		logger.info("Call : AddBoardList.jsp - POST TITLE : " + boardVO.getIdx());
 		
-		boardVO.setAuthor_id(userVO.getId());
-		boardVO.setAuthor_name(userVO.getName());
-		
-		// boardService.addBoard(boardVO);
+		// INSERT
+		if(boardVO.getIdx() == 0) {
+			boardVO.setAuthor_id(userVO.getId());
+			boardVO.setAuthor_name(userVO.getName());
+			
+			boardService.addBoard(boardVO);
+		} 
+		// UPDATE
+		else {
+			boardService.updateBoard(boardVO);
+		}
 		
 		return "redirect:getBoardList.do";
 	}

@@ -35,11 +35,11 @@ public class GetBoardListController {
 	public String showGetBoardList(@ModelAttribute("userVO") UserVO userVO, Model model) {
 		logger.info("Call : GetBoardList - GET NAME: " + userVO.getName());
 		
-		if(userVO.getId() == null)
+		if(userVO.getId() == null) {
 			return "redirect:login.do";
-		else
+		} else {
 			model.addAttribute("boardList", boardService.getBoardList());
-
+		}
 		
 		
 		return "boardList";
