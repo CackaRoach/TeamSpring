@@ -16,7 +16,7 @@
 		<property name="url" value="jdbc:postgresql://localhost:5432/test2"/>
 		<property name="username" value="postgres"></property>
 		<property name="password" value="mjk0717"></property>
-	</bean>
+	</bean> 
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<property name="dataSource" ref="dataSourcePostgre" />
