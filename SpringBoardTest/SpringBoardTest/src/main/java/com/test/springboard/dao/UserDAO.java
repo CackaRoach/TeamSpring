@@ -6,6 +6,6 @@ import com.test.springboard.vo.UserVO;
 
 @Mapper
 public interface UserDAO {
+	public void registUser(UserVO userVO);
     public UserVO searchUser(UserVO userVO);
-
 }

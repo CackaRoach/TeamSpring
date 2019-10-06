@@ -22,7 +22,7 @@ public class LoginController {
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
-	private UserService loginService;
+	private UserService userService;
 
 	// index CALL
 	@RequestMapping(method = RequestMethod.GET)
@@ -37,7 +37,7 @@ public class LoginController {
 	public String login(UserVO userVO, Model model) {
 		logger.info("Call : login.jsp - POST");
 
-		UserVO loginResult = loginService.getUser(userVO); 
+		UserVO loginResult = userService.getUser(userVO); 
 		
 		if(loginResult != null) {
 			model.addAttribute("userVO", loginResult);

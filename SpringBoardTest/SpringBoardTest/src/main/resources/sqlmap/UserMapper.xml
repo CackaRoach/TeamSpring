@@ -3,22 +3,20 @@
 
 <mapper namespace="com.test.springboard.dao.UserDAO">
 
-	<resultMap id="userResult" type="UserVO">
-		<result property="id" column="id"/>
-		<result property="passwd" column="password"/>
-		<result property="name" column="name"/>
-	</resultMap>
+	<insert id="registUser" parameterType="UserVO">
+	
+		INSERT INTO users(id, password, name)
+		VALUES(#{id}, #{passwd}, #{name})
+		
+	</insert>
 
-    <select
-    id="searchUser"
-    parameterType="UserVO"
-    resultMap="userResult" >
+    <select id="searchUser" parameterType="UserVO" resultType="UserVO" >
     
-        select *
-        from users
-        where 1=1
-        and id = #{id}
-        and password = #{passwd}
+        SELECT id, password AS passwd, name
+        FROM users
+        WHERE 1=1
+        AND id = #{id}
+        AND password = #{passwd}
         
     </select>
 

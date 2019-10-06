@@ -15,6 +15,11 @@ public class UserServiceImpl implements UserService {
 	private UserDAO userDAO;
 	
 	@Override
+	public void registUser(UserVO userVO) {
+		userDAO.registUser(userVO);
+	}
+	
+	@Override
 	public UserVO getUser(UserVO userVO) {
 		return userDAO.searchUser(userVO);
 	}

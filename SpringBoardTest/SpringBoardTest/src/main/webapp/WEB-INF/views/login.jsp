@@ -19,5 +19,8 @@
 			<input type="submit" value="Submit">
 		</form>
 	</div>
+	<div align="center">
+		<h2><a href="regist.do">Sign UP</a></h2>
+	</div>
 </body>
 </html>
