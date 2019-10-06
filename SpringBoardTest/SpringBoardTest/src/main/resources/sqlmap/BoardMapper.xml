@@ -20,6 +20,24 @@
     
     </select>
     
+    <select id="getBoardListCond" parameterType="map" resultType="BoardVO">
+    
+    SELECT idx, title, author_name, to_char(uptime, 'YY-MM-DD HH24:MI') as uptime, hits
+    FROM board
+    WHERE 1=1
+    <choose>
+    	<when test="searchCondition.equals('mixed')">
+    	AND title LIKE '%${searchKeyword}%'
+    	OR contents LIKE '%${searchKeyword}%'
+    	</when>
+    	<otherwise>
+    	AND ${searchCondition} LIKE '%${searchKeyword}%'
+    	</otherwise>
+    </choose>
+    ORDER BY idx ASC
+    
+    </select>
+    
     <select id="getBoardDetail" parameterType="int" resultType="BoardVO">
     
     UPDATE board

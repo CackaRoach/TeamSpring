@@ -32,9 +32,21 @@
 				</tr>
 			</c:forEach>
 		</table>
+			<div align="center">
+				<input type="button" onClick="location.href = 'addBoard.do'" value="Post">
+			</div>
 		</div>
 		<div align="center">
-			<h3><a href="addBoard.do">[Post]</a></h3>
+			<form action="getBoardList.do" method="Post">
+				<select name="searchCondition">
+					<option value="title" <c:if test="${searchCondition == 'title'}">selected</c:if>>Title</option>
+					<option value="contents" <c:if test="${searchCondition == 'contents'}">selected</c:if>>Contents</option>
+					<option value="author_name" <c:if test="${searchCondition == 'author_name'}">selected</c:if>>Author</option>
+					<option value="mixed" <c:if test="${searchCondition == 'mixed'}">selected</c:if>>Title + Contents</option>
+				</select>
+				<input type="text" name="searchKeyword" value="${searchKeyword}">
+				<input type="submit" value="search">
+			</form>
 		</div>
 </body>
 </html>

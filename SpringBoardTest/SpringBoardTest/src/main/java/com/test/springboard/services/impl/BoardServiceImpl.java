@@ -2,6 +2,7 @@ package com.test.springboard.services.impl;
 
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public ArrayList<BoardVO> getBoardList() {
 		return boardDAO.getBoardList();
+	}
+	
+	@Override
+	public ArrayList<BoardVO> getBoardList(Map<String, String> searchParams) {
+		return boardDAO.getBoardListCond(searchParams);
 	}
 	
 	@Override

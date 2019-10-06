@@ -12,7 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping("/logout.do")
-@SessionAttributes({"userVO"})
+@SessionAttributes({"userVO", "boardVO", "searchCondition", "searchKeyword"})
 public class LogoutController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LogoutController.class);

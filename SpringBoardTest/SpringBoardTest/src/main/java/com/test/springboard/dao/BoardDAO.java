@@ -1,6 +1,7 @@
 package com.test.springboard.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -12,6 +13,7 @@ public interface BoardDAO {
 	public void addBoard(BoardVO boardVO);
 	public void deleteBoard(BoardVO boardVO);
 	public ArrayList<BoardVO> getBoardList();
+	public ArrayList<BoardVO> getBoardListCond(Map<String, String> searchParams);
 	public BoardVO getBoardDetail(int idx);
 	public void updateBoard(BoardVO boardVO);
 }
