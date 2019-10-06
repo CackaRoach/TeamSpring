@@ -1,7 +1,5 @@
-package com.test.springboard.controllers.user;
+package com.test.springboard.controllers;
 
-
-import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,36 +10,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.test.springboard.services.user.LoginService;
+import com.test.springboard.services.UserService;
+import com.test.springboard.vo.UserVO;
 
-import com.test.springboard.vo.user.UserVO;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 @RequestMapping("/login.do")
-@SessionAttributes({"user_id", "user_passwd"})
+@SessionAttributes({"userVO"})
 public class LoginController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
-	private LoginService loginService;
+	private UserService loginService;
 
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String getHome(Model model) {
-		logger.info("Login.do Called : GET");
-		
+	public String showLogin(Model model) {
+		logger.info("Call : login.jsp - GET");
+
 		return "login";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String postHome(UserVO userVO, Model model) {
-		logger.info("Login.do Called : Post" + userVO.getUser_id() + userVO.getUser_name());
-		loginService.getUser(userVO);
+	public String login(UserVO userVO, Model model) {
+		logger.info("Call : login.jsp - POST");
+
+		UserVO loginResult = loginService.getUser(userVO); 
 		
+		if(loginResult != null) {
+			model.addAttribute("userVO", loginResult);
+			return "redirect:getBoardList.do";
+		}
+
+		model.addAttribute("userID", userVO.getId());
+		model.addAttribute("state", "Incorrect username or password");
 
 		return "login";
 	}

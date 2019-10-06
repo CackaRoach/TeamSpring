@@ -1,8 +1,8 @@
-package com.test.springboard.dao.user;
+package com.test.springboard.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.test.springboard.vo.user.UserVO;
+import com.test.springboard.vo.UserVO;
 
 @Mapper
 public interface UserDAO {

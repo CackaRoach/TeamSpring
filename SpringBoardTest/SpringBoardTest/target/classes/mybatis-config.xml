@@ -6,19 +6,22 @@
 <configuration>
 
 	<settings>
+	
 	    <setting name="cacheEnabled" value="false" />
         <setting name="useGeneratedKeys" value="true" />
         <setting name="defaultExecutorType" value="REUSE" />
-	    <setting name="mapUnderscoreToCamelCase" value="true"/>
+	    <setting name="mapUnderscoreToCamelCase" value="false"/>
 	    <setting name="jdbcTypeForNull" value="OTHER"/>
-	</settings>
 	
+	</settings>
+
     <typeAliases>
-    	<package name="com.test.springboard.vo.user" />
+    	<package name="com.test.springboard.vo" />
     </typeAliases>
     
     <mappers>
-         <mapper resource = "/sqlmap/user.xml"/>
+         <mapper resource = "/sqlmap/UserMapper.xml"/>
+         <mapper resource = "/sqlmap/BoardMapper.xml"/>
      </mappers>
      
 </configuration>

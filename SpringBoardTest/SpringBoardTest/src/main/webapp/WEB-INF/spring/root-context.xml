@@ -25,10 +25,14 @@
 
 	
 	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-    	<property name="mapperInterface" value="com.test.springboard.dao.user.UserDAO" />
+    	<property name="mapperInterface" value="com.test.springboard.dao.UserDAO" />
  		<property name="sqlSessionTemplate" ref="sqlSession" />
     </bean>
 
+	<bean id="boardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface" value="com.test.springboard.dao.BoardDAO" />
+ 		<property name="sqlSessionTemplate" ref="sqlSession" />
+    </bean>
 
 	<bean id="sqlSession" name="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
     <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />

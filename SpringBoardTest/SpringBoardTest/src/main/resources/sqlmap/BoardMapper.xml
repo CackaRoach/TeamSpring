@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.springboard.dao.BoardDAO">
+
+	<!-- Board CRUD -->
+	
+  
+    <insert id="addBoard" parameterType="UserVO">
+    
+    INSERT INTO board(idx, title, contents, author_id, author_name, uptime, hits)
+	VALUES(nextval('board_idx_seq'), #{title}, #{contents}, #{author_id}, #{author_name}, now() , 0)
+    
+    </insert>
+    
+    <select id="getBoardList" resultType="BoardVO">
+    
+    SELECT idx, title, author_name, to_char(uptime, 'YY-MM-DD HH24:MI') as uptime, hits
+    FROM board
+    
+    </select>
+    
+    <select id="getBoardDetail" parameterType="int" resultType="BoardVO">
+    
+    SELECT idx, title, contents, author_id, author_name, to_char(uptime, 'YY-MM-DD HH24:MI') as uptime, hits
+    FROM board
+    WHERE 1=1
+    AND idx = #{idx}
+    
+    </select>
+
+</mapper>
+    
