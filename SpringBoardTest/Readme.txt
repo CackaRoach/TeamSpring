@@ -6,5 +6,5 @@ PostgreSQL 설정
 		<property name="driverClassName" value="org.postgresql.Driver"/>
 		<property name="url" value="jdbc:postgresql://localhost:5432/DB명"/>
 		<property name="username" value="아이디"></property>
-		<property name="password" value="mjk0717"></property>
+		<property name="password" value="패스워드"></property>
 	</bean>
