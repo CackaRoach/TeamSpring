@@ -9,8 +9,8 @@
 </head>
 <body>
 	<div align="center">
-		<form action="addBoard.do" method="post">	
-			<table>
+		<form action="${action}" method="post">	
+			<table border="1" style="border-collapse:collapse; text-align:center">
 				<tr>
 					<td>Title</td><td><input type="text" name="title" value="${boardVO.title}"></td>
 				</tr>

@@ -24,7 +24,7 @@ public class LoginController {
 	@Autowired
 	private UserService loginService;
 
-	
+	// index CALL
 	@RequestMapping(method = RequestMethod.GET)
 	public String showLogin(Model model) {
 		logger.info("Call : login.jsp - GET");
@@ -32,6 +32,7 @@ public class LoginController {
 		return "login";
 	}
 	
+	// Submit
 	@RequestMapping(method = RequestMethod.POST)
 	public String login(UserVO userVO, Model model) {
 		logger.info("Call : login.jsp - POST");

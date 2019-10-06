@@ -1,9 +1,7 @@
 package com.test.springboard.controllers;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,16 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.test.springboard.services.BoardService;
-
 import com.test.springboard.vo.BoardVO;
 import com.test.springboard.vo.UserVO;
 
 @Controller
-@RequestMapping("/addBoard.do")
+@RequestMapping("/updateBoard.do")
 @SessionAttributes({"userVO", "boardVO"})
-public class addBoardController {
+public class UpdateBoardController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(addBoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UpdateBoardController.class);
 	
 	@Autowired
 	private BoardService boardService;
@@ -39,39 +36,31 @@ public class addBoardController {
 		return boardVO;
 	}
 	
+	// Menu-Click
 	@RequestMapping(method = RequestMethod.GET)
-	public String showAddBoardList(@ModelAttribute("userVO") UserVO userVO,
+	public String showUpdateBoardList(@ModelAttribute("userVO") UserVO userVO,
 								    @ModelAttribute("boardVO") BoardVO boardVO,
 								     Model model) {
-		logger.info("Call : AddBoardList.jsp - GET NAME : " + userVO.getName());
+		logger.info("Call : showUpdateBoardList - GET NAME : " + userVO.getName());
+		
 		
 		if(userVO.getId() == null) {
 			return "redirect:login.do";
 		}
-
-		model.addAttribute("boardVO", boardVO);
 		
-		return "addBoard";
+		model.addAttribute("action", "updateBoard.do");
+		
+		return "inputBoard";
 	}
 	
+	// Submit
 	@RequestMapping(method = RequestMethod.POST)
-	public String addBoardList(@ModelAttribute("userVO") UserVO userVO, 
-								@ModelAttribute("boardVO") BoardVO boardVO, 
-								 Model model) {
-		logger.info("Call : AddBoardList.jsp - POST INDEX : " + boardVO.getIdx());
-		logger.info("Call : AddBoardList.jsp - POST TITLE : " + boardVO.getTitle());
+	public String updateBoardList(@ModelAttribute("userVO") UserVO userVO, 
+								@ModelAttribute("boardVO") BoardVO boardVO,
+								  Model model) {
+		logger.info("Call : showUpdateBoardList - POST INDEX : " + boardVO.getIdx());
 		
-		// INSERT
-		if(boardVO.getIdx() == 0) {
-			boardVO.setAuthor_id(userVO.getId());
-			boardVO.setAuthor_name(userVO.getName());
-			
-			boardService.addBoard(boardVO);
-		} 
-		// UPDATE
-		else {
-			boardService.updateBoard(boardVO);
-		}
+		boardService.updateBoard(boardVO);
 		
 		return "redirect:getBoardList.do";
 	}

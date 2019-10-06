@@ -41,21 +41,21 @@ public class GetBoardDetailController {
 		logger.info("Call : showGetBoardDetail - GET INDEX : " + boardVO.getIdx());
 		
 		if(userVO.getId() == null) {
-			return "login.do";
+			return "redirect:login.do";
 		}
-
+		
+		
 		model.addAttribute("userVO", userVO);
 		model.addAttribute("boardVO", boardService.getBoardDetail(boardVO.getIdx()));
-
+		
 		return "boardDetail";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String getBoardDetail(BoardVO boardVO, Model model) {
-		logger.info("Call : showGetBoardDetail - POST");
+		logger.info("X");
 
-		
-		return "boardDetail";
+		return "";
 	}
 	
 }
