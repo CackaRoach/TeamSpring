@@ -18,6 +18,7 @@
 		<property name="password" value=""></property>
 	</bean>
 
+
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<property name="dataSource" ref="dataSourcePostgre" />
     	<property name="configLocation" value="classpath:/mybatis-config.xml" />
