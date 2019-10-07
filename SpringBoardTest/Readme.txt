@@ -1,6 +1,7 @@
 Java 1.6 버전
 tomcat 7버전 
 
+Root-Context.xml
 PostgreSQL 설정
 	<bean id="dataSourcePostgre" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="org.postgresql.Driver"/>
