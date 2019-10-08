@@ -11,7 +11,7 @@ import com.test.springboard.vo.BoardVO;
 public interface BoardDAO {
 	// Board CRUD
 	public void addBoard(BoardVO boardVO);
-	public void deleteBoard(BoardVO boardVO);
+	public void deleteBoard(int idx);
 	public ArrayList<BoardVO> getBoardList();
 	public ArrayList<BoardVO> getBoardListCond(Map<String, String> searchParams);
 	public BoardVO getBoardDetail(int idx);

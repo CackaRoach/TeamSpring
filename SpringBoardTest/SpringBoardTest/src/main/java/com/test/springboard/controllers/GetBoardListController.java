@@ -20,7 +20,7 @@ import com.test.springboard.vo.UserVO;
 
 @Controller
 @RequestMapping("/getBoardList.do")
-@SessionAttributes({"userVO", "searchCondition", "searchKeyword"})
+@SessionAttributes({"userVO"})
 public class GetBoardListController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(GetBoardListController.class);
@@ -28,16 +28,10 @@ public class GetBoardListController {
 	@Autowired
 	private BoardService boardService;
 
-	@ModelAttribute("userVO")
-	public UserVO userVO() {
-		UserVO userVO = new UserVO();
-		return userVO;
-	}
-
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showGetBoardList(@ModelAttribute("userVO") UserVO userVO, Model model) {
-		logger.info("Call : GetBoardList - GET NAME: " + userVO.getName());
+		logger.info("Call : GetBoardList - GET NAME : " + userVO.getName());
 		
 		if(userVO.getId() == null) {
 			return "redirect:login.do";

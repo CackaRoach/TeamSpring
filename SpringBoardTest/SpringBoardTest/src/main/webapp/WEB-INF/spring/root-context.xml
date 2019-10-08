@@ -15,7 +15,7 @@
 		<property name="driverClassName" value="org.postgresql.Driver"/>
 		<property name="url" value="jdbc:postgresql://210.115.230.213:5432/Test"/>
 		<property name="username" value="test"></property>
-		<property name="password" value="test"></property>
+		<property name="password" value="teamspring"></property>
 	</bean>
 
 

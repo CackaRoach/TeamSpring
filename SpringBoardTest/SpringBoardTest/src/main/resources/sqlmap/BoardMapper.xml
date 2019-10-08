@@ -61,7 +61,7 @@
     
     </update>
     
-    <delete id="deleteBoard" parameterType="BoardVO">
+    <delete id="deleteBoard" parameterType="int">
     
     DELETE FROM board
 	WHERE 1=1

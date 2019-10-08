@@ -16,11 +16,11 @@
 	<div align="center">
 		<table border="1" style="border-collapse:collapse; text-align:center">
 			<tr>
-				<th bgcolor="#B2FF95">Index</th>
-				<th bgcolor="#B2FF95">Title</th>
-				<th bgcolor="#B2FF95">Time</th>
-				<th bgcolor="#B2FF95">Author</th>
-				<th bgcolor="#B2FF95">Hits</th>
+				<th bgcolor="#B2FF95" style="width:50px">Index</th>
+				<th bgcolor="#B2FF95" style="width:200px">Title</th>
+				<th bgcolor="#B2FF95" style="width:200px">Time</th>
+				<th bgcolor="#B2FF95" style="width:70px">Author</th>
+				<th bgcolor="#B2FF95" style="width:50px">Hits</th>
 			</tr>
 			<c:forEach var="boardVO" items="${boardList}">
 				<tr>
@@ -32,9 +32,11 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<p></p>
 			<div align="center">
 				<input type="button" onClick="location.href = 'addBoard.do'" value="Post">
 			</div>
+		<p></p>
 		</div>
 		<div align="center">
 			<form action="getBoardList.do" method="Post">
