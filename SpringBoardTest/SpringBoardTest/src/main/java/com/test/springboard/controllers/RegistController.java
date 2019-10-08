@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import com.test.springboard.services.UserService;
 import com.test.springboard.vo.UserVO;
 
@@ -23,7 +24,6 @@ public class RegistController {
 	// CALL
 	@RequestMapping(method = RequestMethod.GET)
 	public String showRegist(Model model) {
-		logger.info("Call : showRegist - GET");
 
 		return "register";
 	}

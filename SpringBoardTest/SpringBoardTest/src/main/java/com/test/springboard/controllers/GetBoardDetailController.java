@@ -20,7 +20,7 @@ import com.test.springboard.vo.UserVO;
 
 @Controller
 @RequestMapping("/getBoardDetail.do")
-@SessionAttributes({"userVO", "boardVO"})
+@SessionAttributes({"userVO", "author_id"})
 public class GetBoardDetailController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(GetBoardDetailController.class);
@@ -44,9 +44,11 @@ public class GetBoardDetailController {
 			return "redirect:login.do";
 		}
 		
+		BoardVO result = boardService.getBoardDetail(boardVO.getIdx());
 		
 		model.addAttribute("userVO", userVO);
-		model.addAttribute("boardVO", boardService.getBoardDetail(boardVO.getIdx()));
+		model.addAttribute("author_id", result.getAuthor_id());
+		model.addAttribute("boardVO", result);
 		
 		return "boardDetail";
 	}

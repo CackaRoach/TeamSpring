@@ -16,7 +16,7 @@ import com.test.springboard.vo.UserVO;
 
 @Controller
 @RequestMapping("/deleteBoard.do")
-@SessionAttributes({"userVO", "boardVO"})
+@SessionAttributes({"userVO", "author_id"})
 public class DeleteBoardController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(DeleteBoardController.class);
@@ -33,15 +33,19 @@ public class DeleteBoardController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showAddBoardList(@ModelAttribute("userVO") UserVO userVO,
-									@ModelAttribute("boardVO") BoardVO boardVO,
-								     Model model) {
-		logger.info("Call : AddBoardList.jsp - GET DELETE INDEX : " + boardVO.getIdx());
+									@ModelAttribute("author_id") String author_id,
+									 int idx, Model model) {
+		logger.info("Call : AddBoardList.jsp - GET DELETE INDEX : " + idx);
+		logger.info("Call : AddBoardList.jsp - GET DELETE AUTHOR_ID : " + author_id);
 		
 		if(userVO.getId() == null) {
 			return "redirect:login.do";
+		} else if(!userVO.getId().equals(author_id)) {
+			return "redirect:logout.do";
 		}
+		
 
-		boardService.deleteBoard(boardVO);
+		boardService.deleteBoard(idx);
 		
 		return "redirect:getBoardList.do";
 	}

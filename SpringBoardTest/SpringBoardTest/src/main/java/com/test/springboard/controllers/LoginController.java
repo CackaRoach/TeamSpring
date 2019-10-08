@@ -39,15 +39,15 @@ public class LoginController {
 
 		UserVO loginResult = userService.getUser(userVO); 
 		
-		if(loginResult != null) {
-			model.addAttribute("userVO", loginResult);
-			return "redirect:getBoardList.do";
+		if(loginResult == null) {
+			model.addAttribute("userVO", userVO);
+			model.addAttribute("state", "Incorrect username or password");
+			
+			return "login";
 		}
-
-		model.addAttribute("userID", userVO.getId());
-		model.addAttribute("state", "Incorrect username or password");
-
-		return "login";
+		
+		model.addAttribute("userVO", loginResult);
+		return "redirect:getBoardList.do";
 	}
 	
 }

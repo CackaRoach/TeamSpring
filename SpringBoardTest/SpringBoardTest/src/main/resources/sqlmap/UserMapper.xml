@@ -10,6 +10,15 @@
 		
 	</insert>
 
+	<select id="checkUserId" parameterType="String" resultType="int">
+		
+		SELECT count(*)
+        FROM users
+        WHERE 1=1
+        AND id = #{userId}
+		
+	</select>
+
     <select id="searchUser" parameterType="UserVO" resultType="UserVO" >
     
         SELECT id, password AS passwd, name

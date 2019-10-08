@@ -20,6 +20,11 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public int checkUserId(String userId) {
+		return userDAO.checkUserId(userId);
+	}
+	
+	@Override
 	public UserVO getUser(UserVO userVO) {
 		return userDAO.searchUser(userVO);
 	}

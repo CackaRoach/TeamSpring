@@ -33,11 +33,6 @@ public class AddBoardController {
 		return userVO;
 	}
 	
-	@ModelAttribute("boardVO")
-	public BoardVO boardVO() {
-		BoardVO boardVO = new BoardVO();
-		return boardVO;
-	}
 	
 	// Menu-Click
 	@RequestMapping(method = RequestMethod.GET)

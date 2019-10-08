@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="Shift_JIS">
-<title>Insert title here</title>
+<title>${boardVO.title}</title>
 </head>
 <body>
 	<div align="center">
@@ -25,7 +25,9 @@
 		</table>
 	</div>
 	<div align="center">
-		<c:if test="${boardVO.author_id == userVO.id}"> <a href="deleteBoard.do">[Delete]</a> </c:if>
+		<c:if test="${boardVO.author_id == userVO.id}">
+		<a href="deleteBoard.do?idx=${boardVO.idx}">[Delete]</a>
+		</c:if>
 	    <c:if test="${boardVO.author_id == userVO.id}"> <a href="updateBoard.do">[Modify]</a> </c:if>
 		<a href="getBoardList.do">[List]</a>
 	</div>
